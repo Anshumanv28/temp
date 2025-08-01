@@ -51,7 +51,7 @@ export default function ChatWindow({ userId }) {
           + Start New Conversation
         </button>
 
-        {conversations.length === 0 ? (
+        {!conversations || conversations.length === 0 ? (
           <p className="text-sm text-gray-500">No conversations yet</p>
         ) : (
           conversations.map((conv) => (
