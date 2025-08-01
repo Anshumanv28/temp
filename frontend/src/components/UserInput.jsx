@@ -10,7 +10,8 @@ export default function UserInput({ userId }) {
     setLoading,
     conversationId,
     setConversationId,
-    setHistory
+    setHistory,
+    loadConversations
   } = useChat();
 
   const sendMessage = async () => {
@@ -29,6 +30,9 @@ export default function UserInput({ userId }) {
     setLoading(false);
     setUserInput("");
     setHistory((prev) => [...new Set([res.conversation_id, ...prev])]);
+    
+    // Refresh conversations list after sending message
+    loadConversations(userId);
   };
 
   return (
