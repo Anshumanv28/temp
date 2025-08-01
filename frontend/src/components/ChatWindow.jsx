@@ -5,12 +5,12 @@ import UserInput from "./UserInput";
 import { useChat } from "../context/ChatContext";
 
 export default function ChatWindow({ userId }) {
-  const { messages, history, setConversationId, setMessages, loadConversations, conversations, conversationId } = useChat();
+  const { messages, setConversationId, setMessages, loadConversations, conversations, conversationId } = useChat();
 
   useEffect(() => {
     // Load conversations when component mounts
     loadConversations(userId);
-  }, [userId]); // Remove loadConversations from dependency array
+  }, [userId, loadConversations]);
 
   const loadPastConversation = async (cid) => {
     try {
